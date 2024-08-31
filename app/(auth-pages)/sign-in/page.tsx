@@ -7,10 +7,14 @@ const Login = () => {
     const handleSignInWithGoogle = async (response: { credential: any }) => {
       console.log(response);
       const supabase = createClient();
-      const { data, error } = await supabase.auth.signInWithIdToken({
-        provider: "google",
-        token: response.credential,
-      });
+      await supabase.auth
+        .signInWithIdToken({
+          provider: "google",
+          token: response.credential,
+        })
+        .then(() => {
+          window.location.href = "/home";
+        });
     };
 
     // Make handleSignInWithGoogle globally accessible
