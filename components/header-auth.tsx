@@ -1,6 +1,7 @@
 import { signOutAction } from "@/app/actions";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { createClient } from "@/utils/supabase/server";
+import { IoLogOutOutline } from "react-icons/io5";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -35,7 +36,7 @@ export default async function AuthButton() {
       Hey, {user.user_metadata.full_name}!
       <form action={signOutAction}>
         <Button type="submit" variant={"outline"}>
-          Sign out
+          <IoLogOutOutline />
         </Button>
       </form>
     </div>

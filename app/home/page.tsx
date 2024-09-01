@@ -1,8 +1,16 @@
-import { createClient } from "@/utils/supabase/server";
+import { getFleetingNotes } from "@/api-calls/server-api";
+import NotesList from "@/components/ui/notes-list";
 
 export default async function Home() {
-  const supabase = createClient();
-  const { data: notes } = await supabase.from("notes").select();
+  const notes = await getFleetingNotes();
 
-  return <pre>{JSON.stringify(notes, null, 2)}</pre>;
+  return (
+    <>
+      <h1 className="text-5xl font-bold">Fleeting Notes</h1>
+      <div className="flex flex-row">
+        <div className="w-24">sidebar</div>
+        <NotesList notes={notes} />
+      </div>
+    </>
+  );
 }
