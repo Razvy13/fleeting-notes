@@ -6,7 +6,7 @@ export async function getFleetingNotes() {
   const { data: notes }: { data: FleetingNote[] | null } = await supabase
     .from("notes")
     .select()
-    .order("created_at", { ascending: true });
+    .order("created_at", { ascending: false });
 
   return notes;
 }

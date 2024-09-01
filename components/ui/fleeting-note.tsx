@@ -11,8 +11,10 @@ const Note = ({ note }: Props) => {
     useUpdateFleetingNote(note);
   return (
     <div
-      style={{ backgroundColor: `var(${note.background_color})` }}
-      className="p-4 rounded-lg shadow-lg w-64 h-64 flex flex-col justify-between gap-4"
+      className={
+        note.background_color +
+        " p-4 rounded-lg shadow-lg w-64 h-64 flex flex-col justify-between gap-4"
+      }
     >
       <textarea
         className="text-lg font-medium border-0 bg-transparent focus:outline-none focus:ring-0 h-full resize-none"
