@@ -1,5 +1,6 @@
 "use client";
 import { useUpdateFleetingNote } from "@/hooks/useUpdateFleetingNote";
+import style from "@/styles/fade-in-animation.module.css";
 import { FleetingNote } from "@/types/note";
 
 interface Props {
@@ -13,7 +14,8 @@ const Note = ({ note }: Props) => {
     <div
       className={
         note.background_color +
-        " p-4 rounded-lg shadow-lg w-64 h-64 flex flex-col justify-between gap-4"
+        " p-4 rounded-lg shadow-lg w-64 h-64 flex flex-col justify-between gap-4 " +
+        style["animate-fade-in"]
       }
     >
       <textarea

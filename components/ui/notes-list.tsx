@@ -8,7 +8,7 @@ interface Props {
 const NotesList = ({ notes }: Props) => {
   return (
     <div className="flex flex-wrap gap-10">
-      {notes ? (
+      {notes?.length ? (
         notes.map((note) => <Note key={note.id} note={note} />)
       ) : (
         <div>There is no fleeting notes</div>
