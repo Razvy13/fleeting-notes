@@ -18,7 +18,7 @@ const Note = ({ note }: Props) => {
     >
       <textarea
         className="text-lg font-medium border-0 bg-transparent focus:outline-none focus:ring-0 h-full resize-none"
-        value={noteTitle}
+        value={noteTitle || ""}
         onChange={(e) => setNoteTitle(e.target.value)}
         onBlur={() => {
           if (note.title !== noteTitle) handleUpdateNote();

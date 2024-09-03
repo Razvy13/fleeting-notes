@@ -11,7 +11,7 @@ export const useUpdateFleetingNote = (note: FleetingNote) => {
       title: noteTitle,
     });
 
-    console.error(error);
+    if (error) console.error(error);
   };
 
   return {

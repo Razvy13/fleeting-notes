@@ -1,9 +1,10 @@
-import { getFleetingNotes } from "@/api-calls/server-api";
+"use client";
 import NewNote from "@/components/ui/new-note";
 import NotesList from "@/components/ui/notes-list";
+import { useNotes } from "@/hooks/useNotes";
 
-export default async function Home() {
-  const notes = await getFleetingNotes();
+export default function Home() {
+  const { notes } = useNotes();
 
   return (
     <>
