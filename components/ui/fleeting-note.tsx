@@ -3,8 +3,7 @@ import { deleteFleetingNoteById } from "@/api-calls/client-api";
 import { useUpdateFleetingNote } from "@/hooks/useUpdateFleetingNote";
 import style from "@/styles/fade-in-animation.module.css";
 import { FleetingNote } from "@/types/note";
-import { MdDelete } from "react-icons/md";
-import { Button } from "./button";
+import { DeleteConfirmationDialog } from "../delete-confirmation-dialog";
 
 interface Props {
   note: FleetingNote;
@@ -36,13 +35,9 @@ const Note = ({ note }: Props) => {
           month: "short",
           day: "numeric",
         })}
-        <Button
-          type="submit"
-          variant={"link"}
-          onClick={() => deleteFleetingNoteById(note.id)}
-        >
-          <MdDelete className="text-red-800 h-5 w-5" />
-        </Button>
+        <DeleteConfirmationDialog
+          onDelete={() => deleteFleetingNoteById(note.id)}
+        />
       </div>
     </div>
   );
