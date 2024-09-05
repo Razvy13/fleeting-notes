@@ -25,3 +25,11 @@ export async function insertEmptyFleetingNoteWithColor(
 
   return { data, error };
 }
+
+export async function deleteFleetingNoteById(id: string) {
+  const supabase = createClient();
+
+  const { data, error } = await supabase.from("notes").delete().eq("id", id);
+
+  return { data, error };
+}

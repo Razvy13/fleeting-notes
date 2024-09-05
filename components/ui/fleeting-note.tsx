@@ -1,7 +1,10 @@
 "use client";
+import { deleteFleetingNoteById } from "@/api-calls/client-api";
 import { useUpdateFleetingNote } from "@/hooks/useUpdateFleetingNote";
 import style from "@/styles/fade-in-animation.module.css";
 import { FleetingNote } from "@/types/note";
+import { MdDelete } from "react-icons/md";
+import { Button } from "./button";
 
 interface Props {
   note: FleetingNote;
@@ -10,6 +13,7 @@ interface Props {
 const Note = ({ note }: Props) => {
   const { noteTitle, setNoteTitle, handleUpdateNote } =
     useUpdateFleetingNote(note);
+
   return (
     <div
       className={
@@ -26,12 +30,19 @@ const Note = ({ note }: Props) => {
           if (note.title !== noteTitle) handleUpdateNote();
         }}
       ></textarea>
-      <div>
+      <div className="flex justify-between items-center">
         {new Date(note.created_at).toLocaleDateString("en-US", {
           year: "numeric",
           month: "short",
           day: "numeric",
         })}
+        <Button
+          type="submit"
+          variant={"link"}
+          onClick={() => deleteFleetingNoteById(note.id)}
+        >
+          <MdDelete className="text-red-800 h-5 w-5" />
+        </Button>
       </div>
     </div>
   );
